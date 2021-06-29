@@ -15,7 +15,17 @@ public class LevelManager : MonoBehaviour
     public void StartLevel()
     {
         srandom = new SeedRandom(User.data.level);
+        ProceedLevel();
+    }
+
+    public void ProceedLevel()
+    {
         int obstacleSetId = srandom.Number(0, obstacleSets.Length);
         Instantiate(obstacleSets[obstacleSetId], transform.position, transform.rotation);
+    }
+
+    public void StopLevel()
+    {
+
     }
 }

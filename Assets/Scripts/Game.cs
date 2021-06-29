@@ -10,11 +10,15 @@ public class Game : MonoBehaviour
 
     public LevelManager levelManager;
 
+    public Vector2 screenBounds;
+
     void Awake()
     {
         Instance = this;
 
         ConfigAspectRatio();
+
+        screenBounds = cam.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
         User.Load();
 
