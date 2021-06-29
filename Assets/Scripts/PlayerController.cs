@@ -10,9 +10,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 dragStartPos;
     private bool dragging = false;
 
+    public Vector2 bounds;
+    public Vector2 playerSize;
+
     void Start()
     {
-
+        bounds = Game.Instance.cam.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+        playerSize = new Vector2(0.65f / 2.0f, 0.65f / 2.0f);
     }
 
     void Update()
@@ -39,5 +43,15 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(touchPos.x - dragStartPos.x, touchPos.y - dragStartPos.y, transform.position.z);
         }
+
+        ClampPlayerIntoBounds();
+    }
+
+    void ClampPlayerIntoBounds()
+    {
+        Vector3 pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, -bounds.x + playerSize.x, bounds.x - playerSize.x);
+        pos.y = Mathf.Clamp(pos.y, -bounds.y + playerSize.y, bounds.y - playerSize.y);
+        transform.position = pos;
     }
 }

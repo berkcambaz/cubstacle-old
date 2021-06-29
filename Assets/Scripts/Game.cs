@@ -7,16 +7,11 @@ public class Game : MonoBehaviour
     public static Game Instance;
 
     public Camera cam;
-    public Vector2 bounds;
-    public Vector2 playerSize;
 
     void Awake()
     {
         Instance = this;
-        bounds = cam.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-        playerSize = new Vector2(0.65f / 2.0f, 0.65f / 2.0f);
-        Debug.Log(bounds.x);
-        Debug.Log(bounds.y);
+
         ConfigAspectRatio();
 
         User.Load();
