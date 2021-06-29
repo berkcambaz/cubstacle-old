@@ -11,11 +11,16 @@ public class Game : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        SaveData saveData = SaveData.Load();
+        User.Load();
     }
 
     void Update()
     {
         
+    }
+
+    private void OnApplicationQuit()
+    {
+        User.Save();
     }
 }
