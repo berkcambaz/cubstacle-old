@@ -8,6 +8,8 @@ public class Game : MonoBehaviour
 
     public Camera cam;
 
+    public LevelManager levelManager;
+
     void Awake()
     {
         Instance = this;
@@ -15,6 +17,11 @@ public class Game : MonoBehaviour
         ConfigAspectRatio();
 
         User.Load();
+
+        // Init managers
+        levelManager.Init();
+
+        LevelManager.Instance.StartLevel();
     }
 
     private void OnApplicationQuit()

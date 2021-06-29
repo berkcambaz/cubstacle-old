@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 dragStartPos;
     private bool dragging = false;
 
-    public Vector2 bounds;
-    public Vector2 playerSize;
+    private Vector2 bounds;
+    private Vector2 playerSize;
 
     void Start()
     {
