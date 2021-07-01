@@ -11,6 +11,8 @@ public class UIMain : MonoBehaviour
     public Text textScore;
     public Text textLevel;
 
+    public Image imageLevelProgress;
+
     public void Init() { Instance = this; }
 
     public void UpdateScore()
@@ -22,5 +24,10 @@ public class UIMain : MonoBehaviour
     public void UpdateLevel()
     {
         textLevel.text = User.data.level.ToString();
+    }
+
+    public void UpdateLevelProgress(float _progress)
+    {
+        imageLevelProgress.transform.localScale = new Vector3(_progress, 1f, 1f);
     }
 }

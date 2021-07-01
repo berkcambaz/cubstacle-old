@@ -138,4 +138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95efd78ca0dbcf64aa2b6974248963c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxCollider: {fileID: 4894315314833795164}
+  spriteRenderer: {fileID: 4894315314833795165}
   speed: 2.5

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ObstacleSetController : MonoBehaviour
 {
-    // lastChild has the highest y value
+    // Last child has the highest y value in a obstacle set
     public GameObject lastChild;
 
     private void Update()
     {
         // If child is null, obstacle set is finished
-        if (!lastChild.activeSelf)
+        if (lastChild == null)
         {
             LevelManager.Instance.ProceedLevel();
             Destroy(gameObject);

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour
 {
+    public BoxCollider2D boxCollider;
+    public SpriteRenderer spriteRenderer;
+
     public float speed;
 
-    private Vector2 obstacleSize;
+    private float obstacleHeight;
 
     void Start()
     {
-        obstacleSize = new Vector2(transform.localScale.x / 2.0f, transform.localScale.y / 2.0f);
+        obstacleHeight = transform.localScale.y / 2.0f;
     }
 
     void Update()
@@ -19,12 +22,13 @@ public class ObstacleController : MonoBehaviour
         transform.Translate(Vector2.down * speed * Time.deltaTime);
 
         // Destory if outside of the screen
-        if (transform.position.y + obstacleSize.y < -Game.Instance.screenBounds.y)
-            gameObject.SetActive(false);
+        if (transform.position.y + obstacleHeight < -Game.Instance.screenBounds.y)
+            Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        boxCollider.enabled = false;
+        spriteRenderer.enabled = false;
     }
 }
