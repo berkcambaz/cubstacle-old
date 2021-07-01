@@ -10,5 +10,9 @@ public class Character
 public enum CharacterId
 {
     Default,
+    Duck,
+    Creeper,
+    Isaac,
+    Cylde,
     Count
 }

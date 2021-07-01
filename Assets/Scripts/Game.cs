@@ -9,8 +9,9 @@ public class Game : MonoBehaviour
     public Camera cam;
 
     public LevelManager levelManager;
+    public UIManager uiManager;
 
-    public Vector2 screenBounds;
+    [System.NonSerialized] public Vector2 screenBounds;
 
     void Awake()
     {
@@ -24,6 +25,7 @@ public class Game : MonoBehaviour
 
         // Init managers
         levelManager.Init();
+        uiManager.Init();
 
         LevelManager.Instance.StartLevel();
     }
@@ -42,7 +44,5 @@ public class Game : MonoBehaviour
         float dt = size * (defRes.x / defRes.y);
 
         cam.orthographicSize = dt / (currRes.x / currRes.y);
-        // (dt / ( defRes.x /  defRes.y)    Native resolution of the game
-        // (dt / (currRes.x / currRes.y)    Phone's resolution
     }
 }
