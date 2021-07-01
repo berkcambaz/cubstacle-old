@@ -20,7 +20,7 @@ public class ObstacleController : MonoBehaviour
 
         // Destory if outside of the screen
         if (transform.position.y + obstacleSize.y < -Game.Instance.screenBounds.y)
-            Destroy(gameObject);
+            gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

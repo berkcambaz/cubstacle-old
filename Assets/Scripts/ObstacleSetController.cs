@@ -10,7 +10,7 @@ public class ObstacleSetController : MonoBehaviour
     private void Update()
     {
         // If child is null, obstacle set is finished
-        if (lastChild == null)
+        if (!lastChild.activeSelf)
         {
             LevelManager.Instance.ProceedLevel();
             Destroy(gameObject);
