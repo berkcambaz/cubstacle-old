@@ -15,20 +15,24 @@ public class SnapGrid : MonoBehaviour
     {
         if (EditorApplication.isPlaying) return;
 
+        Vector2 screen = new Vector2(2.8125f, 5f);
+        Vector2 scale = transform.localScale;
+        Vector2 offset = new Vector2(screen.x % scale.x, screen.y % scale.y);
+
         float snappedX;
         if (snapToCenter || snapToCenterX)
             snappedX = transform.position.x;
         else
-            snappedX = transform.position.x - (transform.position.x == 0f ? 0f : Mathf.Sign(transform.position.x) * 0.2125f);
+            snappedX = transform.position.x - (transform.position.x == 0f ? 0f : Mathf.Sign(transform.position.x) * offset.x);
 
         float snappedY;
         if (snapToCenter || snapToCenterY)
             snappedY = transform.position.y;
         else
-            snappedY = transform.position.y - (transform.position.y == 0f ? 0f : Mathf.Sign(transform.position.y) * -0.2f);
+            snappedY = transform.position.y - (transform.position.y == 0f ? 0f : Mathf.Sign(transform.position.y) * offset.y);
 
-        snappedX = RoundTo(snappedX, 0.325f, snapToCenter || snapToCenterX ? 0f : 0.2125f);
-        snappedY = RoundTo(snappedY, 0.325f, snapToCenter || snapToCenterY ? 0f : -0.2f);
+        snappedX = RoundTo(snappedX, scale.x / 2f, snapToCenter || snapToCenterX ? 0f : offset.x);
+        snappedY = RoundTo(snappedY, scale.y / 2f, snapToCenter || snapToCenterY ? 0f : offset.y);
 
         transform.position = new Vector3(snappedX, snappedY, transform.position.z);
     }

@@ -1101,6 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiMain: {fileID: 1490421414}
+  uiMenu: {fileID: 487463119}
 --- !u!1 &1300922192
 GameObject:
   m_ObjectHideFlags: 0
