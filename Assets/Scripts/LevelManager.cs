@@ -44,8 +44,11 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator LevelCountdownTimer()
     {
+        float countdown = levelCountdown;
+
         while (levelCountdown > 0f && User.alive)
         {
+            UIMain.Instance.UpdateLevelProgress(1f - levelCountdown / countdown);
             levelCountdown -= Time.deltaTime;
             yield return null;
         }
