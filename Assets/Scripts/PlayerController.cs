@@ -53,4 +53,9 @@ public class PlayerController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, -screenBounds.y + playerSize.y, screenBounds.y - playerSize.y);
         transform.position = pos;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        LevelManager.Instance.StopLevel(false);
+    }
 }

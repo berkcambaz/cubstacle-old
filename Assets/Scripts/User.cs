@@ -7,8 +7,29 @@ using UnityEngine;
 public class User
 {
     public static SaveData data = new SaveData();
+    public static bool alive = false;
 
     private static string savePath = Application.persistentDataPath + "/user.json";
+
+    public static void CompleteLevel()
+    {
+        data.level++;
+        UIMain.Instance.UpdateLevel();
+    }
+
+    public static void Spawn()
+    {
+        alive = true;
+
+        Game.Instance.SpawnPlayer();
+    }
+
+    public static void Despawn()
+    {
+        alive = false;
+
+        Game.Instance.DespawnPlayer();
+    }
 
     public static void Load()
     {

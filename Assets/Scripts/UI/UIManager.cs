@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public UIMain uiMain;
+    public UIMenu uiMenu;
 
     public void Init()
     {
@@ -14,6 +15,7 @@ public class UIManager : MonoBehaviour
 
         // Initialize other components of the UI
         uiMain.Init();
+        uiMenu.Init();
 
         // Update necessary parts of the UI
         uiMain.UpdateScore();

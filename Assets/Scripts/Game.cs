@@ -8,6 +8,9 @@ public class Game : MonoBehaviour
 
     public Camera cam;
 
+    public GameObject playerPrefab;
+    private GameObject playerGameObject;
+
     public LevelManager levelManager;
     public UIManager uiManager;
 
@@ -26,13 +29,21 @@ public class Game : MonoBehaviour
         // Init managers
         levelManager.Init();
         uiManager.Init();
-
-        LevelManager.Instance.StartLevel();
     }
 
     private void OnApplicationQuit()
     {
         User.Save();
+    }
+
+    public void SpawnPlayer()
+    {
+        playerGameObject = Instantiate(playerPrefab, transform.position, transform.rotation);
+    }
+    
+    public void DespawnPlayer()
+    {
+        Destroy(playerGameObject);
     }
 
     private void ConfigAspectRatio()
