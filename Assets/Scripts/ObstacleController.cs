@@ -7,8 +7,6 @@ public class ObstacleController : MonoBehaviour
     public BoxCollider2D boxCollider;
     public SpriteRenderer spriteRenderer;
 
-    public float speed;
-
     private float obstacleHeight;
 
     void Start()
@@ -18,9 +16,6 @@ public class ObstacleController : MonoBehaviour
 
     void Update()
     {
-        // Move the obstacle down
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
-
         // Destory if outside of the screen
         if (transform.position.y + obstacleHeight < -Game.Instance.screenBounds.y)
             Destroy(gameObject);

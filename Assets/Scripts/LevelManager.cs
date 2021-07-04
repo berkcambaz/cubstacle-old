@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     public GameObject[] obstacleSets;
 
     private SeedRandom srandom;
-    private GameObject currentObstacleSet;
+    private List<GameObject> currentObstacleSets;
     private float levelCountdown;
 
     public void Init() { Instance = this; }
@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
     public void StartLevel()
     {
         srandom = new SeedRandom(User.data.level);
+
+        currentObstacleSets = new List<GameObject>();
 
         // Level countdown is ranging from 15.5 to 25 seconds depending on the level
         levelCountdown = 15f + Mathf.Clamp(User.data.level * 0.05f, 0f, 10f);
@@ -30,12 +32,17 @@ public class LevelManager : MonoBehaviour
     public void ProceedLevel()
     {
         int obstacleSetId = srandom.Number(0, obstacleSets.Length);
-        currentObstacleSet = Instantiate(obstacleSets[obstacleSetId], transform.position, transform.rotation);
+        currentObstacleSets.Add(Instantiate(obstacleSets[obstacleSetId], transform.position, transform.rotation));
     }
 
     public void StopLevel(bool _success)
     {
-        Destroy(currentObstacleSet);
+        for (int i = 0; i < currentObstacleSets.Count; i++)
+        {
+            if (currentObstacleSets[i] != null)
+                Destroy(currentObstacleSets[i]);
+        }
+
         User.Despawn();
         if (_success) User.CompleteLevel();
 
